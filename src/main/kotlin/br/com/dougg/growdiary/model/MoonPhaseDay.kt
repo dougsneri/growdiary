@@ -2,7 +2,7 @@ package br.com.dougg.growdiary.model
 
 import java.time.LocalDate
 
-data class MoonPhaseYear(
+data class MoonPhaseDay(
         val moonPhase: MoonPhase,
-        val dates: List<LocalDate>
+        val date: LocalDate
 )
