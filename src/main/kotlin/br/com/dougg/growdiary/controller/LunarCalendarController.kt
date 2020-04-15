@@ -1,31 +1,33 @@
 package br.com.dougg.growdiary.controller
 
-import br.com.dougg.growdiary.model.DayInfo
 import br.com.dougg.growdiary.model.MoonDay
-import br.com.dougg.growdiary.repository.MoonDayRepository
-import br.com.dougg.growdiary.service.LunarDayService
+import br.com.dougg.growdiary.service.MoonPhaseDatesService
+import br.com.dougg.growdiary.service.UsesToCultivationService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import java.time.LocalDate
 
 @RestController
 @RequestMapping("/calendar")
-class LunarCalendarController(private val lunarDayService: LunarDayService, private val moonDayRepository: MoonDayRepository) {
+class LunarCalendarController(private val usesToCultivationService: UsesToCultivationService,
+                              private val moonPhaseDatesService: MoonPhaseDatesService) {
 
-    @GetMapping("/uses")
-    fun getUses(@RequestBody date: LocalDate): ResponseEntity<DayInfo> {
-
-        return ResponseEntity.status(200).body(lunarDayService.getUsesToDate(date))
-    }
+    @GetMapping("/uses/to-date/{date}")
+    fun getUsesToCultivationPerDate(@PathVariable date: LocalDate) =
+            ResponseEntity.status(HttpStatus.OK).body(usesToCultivationService.getUsesToDate(date))
 
     @PostMapping("/create/moon-phase-dates")
-    fun saveMoonPhaseDates(@RequestBody dates: List<MoonDay>): List<MoonDay> {
-        return lunarDayService.createMoonPhaseDates(dates)
-    }
+    fun createMoonPhaseDates(@RequestBody dates: List<MoonDay>) =
+            ResponseEntity.status(HttpStatus.OK).body(moonPhaseDatesService.createMoonPhaseDates(dates))
 
-    @GetMapping("/all")
-    fun getDays(): List<MoonDay> {
-        return moonDayRepository.findAll()
-    }
+    @GetMapping("/list/moon-phase-dates")
+    fun getMoonPhaseDatesFromDataBase() =
+            ResponseEntity.status(HttpStatus.OK).body(moonPhaseDatesService.getAllMoonDates())
 
 }

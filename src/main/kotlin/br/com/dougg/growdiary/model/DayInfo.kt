@@ -5,6 +5,9 @@ import java.time.LocalDate
 
 data class DayInfo(
         val date: LocalDate,
+
+        val moon: MoonPhase,
+
         @JsonProperty("make_use")
         val makeUse: List<Use>
 )

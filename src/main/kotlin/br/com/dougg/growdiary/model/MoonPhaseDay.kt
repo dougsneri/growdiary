@@ -4,5 +4,6 @@ import java.time.LocalDate
 
 data class MoonPhaseDay(
         val moonPhase: MoonPhase,
+
         val date: LocalDate
 )

@@ -14,9 +14,7 @@ data class MoonDay(
         @JsonIgnore
         val id: Int = 0,
 
-//        @get: NotBlank
         val date: LocalDate = LocalDate.now(),
 
-//        @get: NotBlank
         val lunarPhase: MoonPhase = MoonPhase.CHEIA
 )
