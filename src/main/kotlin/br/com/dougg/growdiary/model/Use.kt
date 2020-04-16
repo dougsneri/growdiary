@@ -6,5 +6,6 @@ enum class Use {
     ADUBO,
     CLONES,
     PODA,
-    CONTROLE_PRAGAS
+    CONTROLE_PRAGAS,
+    ECLIPSE_DAY_DONT_DO_ANYTHING
 }

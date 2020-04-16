@@ -4,5 +4,6 @@ enum class MoonPhase {
     CHEIA,
     MINGUANTE,
     NOVA,
-    CRESCENTE
+    CRESCENTE,
+    ECLIPSE_DAY
 }
