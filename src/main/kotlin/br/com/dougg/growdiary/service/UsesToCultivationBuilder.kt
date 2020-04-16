@@ -1,7 +1,7 @@
 package br.com.dougg.growdiary.service
 
 import br.com.dougg.growdiary.model.DayInfo
-import br.com.dougg.growdiary.model.MoonDay
+import br.com.dougg.growdiary.entity.MoonDay
 import br.com.dougg.growdiary.model.MoonPhase.*
 import br.com.dougg.growdiary.model.Use.*
 import java.time.LocalDate
@@ -22,14 +22,13 @@ class UsesToCultivationBuilder {
         return this
     }
 
-    fun build(): DayInfo {
-        return when (currentMoonDay.lunarPhase) {
-            CHEIA -> fullMoonFlow()
-            NOVA -> newMoonFlow()
-            MINGUANTE -> waningCrescentMoonFlow()
-            CRESCENTE -> waxingCrescentMoonFlow()
-        }
+    fun build() = when (currentMoonDay.lunarPhase) {
+        CHEIA -> fullMoonFlow()
+        NOVA -> newMoonFlow()
+        MINGUANTE -> waningCrescentMoonFlow()
+        CRESCENTE -> waxingCrescentMoonFlow()
     }
+
 
     private fun waxingCrescentMoonFlow(): DayInfo {
         val days = ChronoUnit.DAYS.between(currentMoonDay.date, dateToConsult) + 1 //Soma + 1 para contar o dia da lua

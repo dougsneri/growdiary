@@ -1,7 +1,7 @@
 package br.com.dougg.growdiary.service
 
 import br.com.dougg.growdiary.model.DayInfo
-import br.com.dougg.growdiary.model.MoonDay
+import br.com.dougg.growdiary.entity.MoonDay
 import br.com.dougg.growdiary.repository.MoonDayRepository
 import org.springframework.stereotype.Service
 import java.time.LocalDate

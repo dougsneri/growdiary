@@ -1,6 +1,6 @@
 package br.com.dougg.growdiary.service
 
-import br.com.dougg.growdiary.model.MoonDay
+import br.com.dougg.growdiary.entity.MoonDay
 import br.com.dougg.growdiary.repository.MoonDayRepository
 import org.springframework.stereotype.Service
 
@@ -9,7 +9,7 @@ class MoonPhaseDatesService(private val moonDayRepository: MoonDayRepository) {
 
     fun createMoonPhaseDates(datesToSave: List<MoonDay>): List<MoonDay> {
         val datesMoonPhaseCreated = ArrayList<MoonDay>()
-        datesToSave.stream().forEach { dateToSave -> datesMoonPhaseCreated.add(moonDayRepository.save(dateToSave)) }
+        datesToSave.forEach { dateToSave -> datesMoonPhaseCreated.add(moonDayRepository.save(dateToSave)) }
 
         return datesMoonPhaseCreated
     }

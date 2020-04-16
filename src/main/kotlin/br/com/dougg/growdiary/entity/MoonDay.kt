@@ -1,5 +1,6 @@
-package br.com.dougg.growdiary.model
+package br.com.dougg.growdiary.entity
 
+import br.com.dougg.growdiary.model.MoonPhase
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDate
 import javax.persistence.Entity
