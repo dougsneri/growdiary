@@ -2,6 +2,7 @@ package br.com.dougg.growdiary.controller
 
 import br.com.dougg.growdiary.entity.EclipseDay
 import br.com.dougg.growdiary.entity.MoonDay
+import br.com.dougg.growdiary.model.DayInfo
 import br.com.dougg.growdiary.service.EclipseDatesService
 import br.com.dougg.growdiary.service.MoonPhaseDatesService
 import br.com.dougg.growdiary.service.UsesToCultivationService
@@ -22,8 +23,10 @@ class LunarCalendarController(private val usesToCultivationService: UsesToCultiv
                               private val eclipseDatesService: EclipseDatesService) {
 
     @GetMapping("/uses/to-date/{date}")
-    fun getUsesToCultivationPerDate(@PathVariable date: LocalDate) =
-            ResponseEntity.status(HttpStatus.OK).body(usesToCultivationService.getUsesToDate(date))
+    fun getUsesToCultivationPerDate(@PathVariable date: String): ResponseEntity<DayInfo> {
+        val dateConverted: LocalDate = LocalDate.parse(date)
+        return ResponseEntity.status(HttpStatus.OK).body(usesToCultivationService.getUsesToDate(dateConverted))
+    }
 
     @PostMapping("/create/moon-phase-dates")
     fun createMoonPhaseDates(@RequestBody dates: List<MoonDay>) =

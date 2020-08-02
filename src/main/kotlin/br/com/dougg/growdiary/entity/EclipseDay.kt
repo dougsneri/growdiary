@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
-@Entity(name = "moon_day")
+@Entity(name = "eclipse_day")
 data class EclipseDay(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

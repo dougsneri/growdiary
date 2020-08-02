@@ -27,6 +27,7 @@ class UsesToCultivationBuilder {
         NOVA -> newMoonFlow()
         MINGUANTE -> waningCrescentMoonFlow()
         CRESCENTE -> waxingCrescentMoonFlow()
+        else -> fullMoonFlow()
     }
 
 
