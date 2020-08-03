@@ -2,7 +2,7 @@ package br.com.dougg.growdiary.service
 
 import br.com.dougg.growdiary.model.DayInfo
 import br.com.dougg.growdiary.entity.MoonDay
-import br.com.dougg.growdiary.model.MoonPhase.*
+import br.com.dougg.growdiary.model.MoonPhaseEnum.*
 import br.com.dougg.growdiary.model.Use.*
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit

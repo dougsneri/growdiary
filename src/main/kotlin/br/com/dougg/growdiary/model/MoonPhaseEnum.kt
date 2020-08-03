@@ -1,6 +1,6 @@
 package br.com.dougg.growdiary.model
 
-enum class MoonPhase {
+enum class MoonPhaseEnum {
     CHEIA,
     MINGUANTE,
     NOVA,

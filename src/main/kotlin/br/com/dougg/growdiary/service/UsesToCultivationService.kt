@@ -2,7 +2,7 @@ package br.com.dougg.growdiary.service
 
 import br.com.dougg.growdiary.model.DayInfo
 import br.com.dougg.growdiary.entity.MoonDay
-import br.com.dougg.growdiary.model.MoonPhase
+import br.com.dougg.growdiary.model.MoonPhaseEnum
 import br.com.dougg.growdiary.model.Use
 import br.com.dougg.growdiary.repository.MoonDayRepository
 import org.springframework.stereotype.Service
@@ -15,7 +15,7 @@ class UsesToCultivationService(private val moonDayRepository: MoonDayRepository,
 
     fun getUsesToDate(dateToConsult: LocalDate): DayInfo {
         if(isEclipseDay(dateToConsult))
-            return DayInfo(dateToConsult, MoonPhase.ECLIPSE_DAY, listOf(Use.ECLIPSE_DAY_DONT_DO_ANYTHING))
+            return DayInfo(dateToConsult, MoonPhaseEnum.ECLIPSE_DAY, listOf(Use.ECLIPSE_DAY_DONT_DO_ANYTHING))
 
         val datesFromDataBase = moonDayRepository.findAll()
 
