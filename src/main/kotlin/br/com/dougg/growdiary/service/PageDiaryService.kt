@@ -13,6 +13,7 @@ class PageDiaryService(private val diaryPageRepository: DiaryPageRepository) {
     }
 
     fun getPagesToDate(dateConverted: LocalDate): DiaryPage {
+        TODO("Falta implementar a busca de paginas por data")
         return DiaryPage(action = ActionEnum.FLUSH)
     }
 

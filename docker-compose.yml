@@ -2,17 +2,22 @@ version: '3.8'
 
 services:
   postgres-compose:
+    container_name: db-growdiary
     image: postgres
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "Senhaum-2"
+      POSTGRES_DB: growdiary
+      PGDATA: /var/lib/postgresql/data
     ports:
       - "5432:5432"
-#    volumes:
-#      - ./data/postgres:/var/lib/postgresql/data
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
     networks:
       - postgres-compose-network
 
   pgadmin-compose:
+    container_name: pgadmin-growdiary
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: "dsds.douglas@gmail.com"
@@ -27,31 +32,3 @@ services:
 networks:
   postgres-compose-network:
     driver: bridge
-
-#version: '3.3'
-#
-#services:
-#  postgres-db:
-#    image: postgres:latest
-#    ports:
-#      - 5432:5432
-#    environment:
-#        POSTGRES_PASSWORD: postgres
-#        POSTGRES_USER: postgres
-#        PGDATA: /var/lib/postgresql/data
-#    volumes:
-#      - ./data/postgres:/var/lib/postgresql/data
-
-#volumes:
-#  data: {}
-
-#  db:
-#    image: postgres:9.4
-#    ports:
-#      - 5432:5432
-#    environment:
-#      POSTGRES_PASSWORD: postgres
-#      POSTGRES_USER: postgres
-#      PGDATA: /var/lib/postgresql/data
-#    volumes:
-#      - /projects/own/docker_php/pgdata:/var/lib/postgresql/data
